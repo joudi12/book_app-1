@@ -7,7 +7,7 @@ app.use(cors());
 
 const superagent = require('superagent');
 
-const PORT = process.env.port;
+const PORT = process.env.port ;
 
 app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static('public'));
@@ -70,6 +70,4 @@ function Book(value) {
 app.get('*', (req, res) => {
     res.status(404).send('bage not found ')
 })
-app.listen(PORT, () => {
-    console.log('listen to port '+PORT);
-});
+app.listen(process.env.PORT || 5000);
