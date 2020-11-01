@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./public/styles/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ruge+Boogie&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+</head>
+
+<body>
+    <header> Best Book</header>
+    <main>
+        <h4>searche by title or Aouther</h4>
+        <form action="/searches" method="POST">
+            <input type="text" name="search" placeholder="entetr a title or auther " required>
+            <fieldset>
+                <label for="title">
+                    <span>title</span>
+                    <input type="radio" name="search" value="title" required>
+                </label>
+            </fieldset>
+            <fieldset>
+                <label for="author">
+                    <span>Author</span>
+                    <input type="radio" name="search" value="author" required>
+                </label>
+            </fieldset>
+            <button type="submit"> search the google API </button>
+        </form>
+    </main>
+</body>
+
+</html>
