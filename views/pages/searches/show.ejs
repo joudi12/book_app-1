@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./public/styles/base.css">
+
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header> Best Book</header>
+    <main>
+        <h4>Search Result </h4>
+
+        <% searchResults.forEach( book => { %>
+            <div>
+                <img src=<%=book.img %> alt="book">
+                <h2>
+                    <%= book.title %>
+                </h2>
+                <h3>
+                    <%= book.auther %>
+                </h3>
+                <p>
+                    <%= book.des %>
+                </p>
+            </div>
+            <% }) %>
+
+    </main>
+
+</body>
+
+</html>

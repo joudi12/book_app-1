@@ -1,0 +1,21 @@
+@media screen and (max-width: 480px)and (min-width: 150px) {
+    * {
+        font-family: 'Ruge Boogie', cursive
+    }
+    header {
+        background-color: black;
+        color: white;
+        font-size: xx-large;
+        height: 30%;
+    }
+    main {
+        background-color: rgb(206, 201, 201);
+    }
+    h2 {
+        text-align: center;
+        background-color: rgb(99, 97, 97);
+        height: 20%;
+        font-size: xx-large;
+        margin: auto;
+    }
+}

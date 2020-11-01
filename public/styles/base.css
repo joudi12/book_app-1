@@ -1,0 +1,37 @@
+@media screen and (max-width: 480px)and (min-width: 150px) {
+    header {
+        background-color: black;
+        color: white;
+        font-size: xx-large;
+        height: 30%;
+        font-family: 'Amatic SC', cursive;
+    }
+    main {
+        font-family: 'Amatic SC', cursive;
+        background-color: rgb(206, 201, 201);
+    }
+    h4 {
+        color: white;
+        text-align: center;
+        background-color: rgb(99, 97, 97);
+        height: 20%;
+        font-size: xx-large;
+        margin: auto;
+    }
+    h3 {
+        font-size: x-large;
+    }
+    h2 {
+        font-size: xx-large;
+    }
+    div {
+        background-color: rgb(228, 222, 222);
+        padding: 5%;
+        margin: 10%;
+        text-align: center;
+        box-shadow: 8px 8px rgb(95, 93, 93);
+    }
+    img {
+        width: 97%;
+    }
+}
