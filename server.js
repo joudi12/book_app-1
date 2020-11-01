@@ -70,4 +70,6 @@ function Book(value) {
 app.get('*', (req, res) => {
     res.status(404).send('bage not found ')
 })
-app.listen(process.env.PORT || 3000);
+app.listen(PORT, () => {
+    console.log('listen to port '+PORT);
+});
