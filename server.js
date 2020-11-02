@@ -10,31 +10,24 @@ const superagent = require('superagent');
 const PORT = process.env.port ;
 
 app.use(express.urlencoded({ extended: true }));
-app.use('/public', express.static('public'));
+app.use('/public', express.static('./public'));
 
-const GOOGL_EBOOK_API = process.env.GOOGL_EBOOK_API;
+
 
 
 app.set('view engine', 'ejs');
 
-// app.get('/index', showmain);
 
-// function showmain(req, res) {
-//     try {
-//         res.render('pages/index.ejs');
-//     } catch (error) {
-//         res.send('something went wrong......')
-//     }
-// }
+app.get('/', indexRender);
 
-app.get('/', showform);
+function indexRender(req, res) {
+    res.render('pages/index');
+};
+
+app.get('/searches/new', showform);
 
 function showform(req, res) {
-    try {
-        res.render('pages/searches/new.ejs');
-    } catch (error) {
-        res.send('something went wrong......')
-    }
+  res.render('pages/searches/new.ejs');
 }
 
 app.post('/searches', ceateSearch);
@@ -56,14 +49,26 @@ function ceateSearch(req, res) {
         }).catch(() => {
             res.send('something went wrong..  ');
         })
+    
 
 }
+function Book(val) {
+    if(val.title){
+        
+    this.title = val.title;
+    }else{this.title = 'Not found'};
 
-function Book(value) {
-    this.img = value.img || 'https://i.imgur.com/J5LVHEL.jpg';
-    this.title = value.title || 'no title available ';
-    this.auther = value.authors[0] || 'no authors available ';
-    this.des = value.description || 'no description available ';
+    if(val.imageLinks.thumbnail){
+        this.image = val.imageLinks.thumbnail
+    }else{this.image = `https://i.imgur.com/J5LVHEL.jpg`};
+    
+    if(val.authors){
+        this.authors = val.authors[0];
+    }else{this.authors = 'Not found' }
+    if(val.description){
+        this.description = val.description;
+    }else{this.description ='Not found' }
+   
 }
 
 
@@ -71,3 +76,4 @@ app.get('*', (req, res) => {
     res.status(404).send('bage not found ')
 })
 app.listen(process.env.PORT || 5000);
+// app.listen(PORT, () => console.log(`Listening on port: 3000`));

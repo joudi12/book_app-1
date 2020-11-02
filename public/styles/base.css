@@ -1,4 +1,5 @@
 @media screen and (max-width: 480px)and (min-width: 150px) {
+
     header {
         background-color: black;
         color: white;
@@ -13,16 +14,18 @@
     h4 {
         color: white;
         text-align: center;
-        background-color: rgb(99, 97, 97);
+     
         height: 20%;
         font-size: xx-large;
         margin: auto;
     }
     h3 {
         font-size: x-large;
+        font-family: 'Amatic SC', cursive;
     }
-    h2 {
+    .one {
         font-size: xx-large;
+        font-family: 'Amatic SC', cursive;
     }
     div {
         background-color: rgb(228, 222, 222);
@@ -30,6 +33,9 @@
         margin: 10%;
         text-align: center;
         box-shadow: 8px 8px rgb(95, 93, 93);
+    }
+    p{
+        font-family: 'Amatic SC', cursive;
     }
     img {
         width: 97%;
