@@ -62,11 +62,12 @@ function Book(val) {
     } else { this.title = 'Not found' };
 
     if (val.imageLinks) {
-        if (!(/https:\/\//.test(val.imageLinks.thumbnail))) {
-            this.img = 'https' + val.imageLinks.thumbnail.slice(4);
-        } else {
-            this.image = val.imageLinks.thumbnail
-        }
+        // if (!(/https:\/\//.test(val.imageLinks.thumbnail))) {
+        //     this.img = 'https' + val.imageLinks.thumbnail.slice(4);
+        // } else {
+        //     this.image = val.imageLinks.thumbnail
+        // }   
+        this.image = val.imageLinks.thumbnail
 
     } else { this.image = `https://i.imgur.com/J5LVHEL.jpg` };
 
