@@ -24,8 +24,10 @@ app.set('view engine', 'ejs');
 app.get('/', indexRender);
 
 function indexRender(req, res) {
-    res.render('pages/index');
-};
+    let SQL = 'SELECT * from mybook;';
+    return client.query(SQL)
+    .then(results => res.render('pages/index', {results:results.rows}))
+  };
 
 app.get('/searches/new', showform);
 
@@ -33,6 +35,42 @@ function showform(req, res) {
     res.render('pages/searches/new.ejs');
 }
 
+
+app.get('/books/:id', viewdetails);
+function viewdetails(req,res){
+    let SQL = 'SELECT * FROM mybook WHERE id=$1;';
+    let val=[req.params.id];
+    console.log(val);
+    client.query(SQL,val)
+    .then(result =>{
+       console.log(result.rows[0])
+       res.render('pages/books/show',{view:result.rows[0]});
+    })
+  
+}
+
+//..................................................................
+app.post('/books', createBook);
+function createBook(req,res){
+
+    let {title, author, isbn, image_url, descriptions, bookshelf} = req.body;
+    let SQL = 'INSERT INTO mybook (title, author, isbn, image_url, descriptions, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)';
+    let values = [title, author, isbn, image_url, descriptions, bookshelf];
+  
+
+//  client.query(SQL, values)
+//   .then(res.render('pages/books/show', {view:result.rows[0]}));
+client.query(SQL,values).then(SQL = 'SELECT * FROM mybook WHERE isbn=$1;');
+values = [req.body.isbn];
+return client.query(SQL, values)
+  .then(result =>{ res.redirect(`/books/${result.rows[0].id}`)
+  console.log('wwwwwwwwww',result)
+})
+// .then(result => res.redirect(`/books/:${req.params.id}`));
+
+
+}
+//............................................................................
 app.post('/searches', ceateSearch);
 
 function ceateSearch(req, res) {
@@ -71,12 +109,14 @@ function Book(val) {
 
     } else { this.image = `https://i.imgur.com/J5LVHEL.jpg` };
 
-    if (val.authors) {
-        this.authors = val.authors[0];
-    } else { this.authors = 'Not found' }
-    if (val.description) {
-        this.description = val.description;
-    } else { this.description = 'Not found' }
+    if (val.author) {
+        this.author = val.author[0];
+    } else { this.author = 'Not found' }
+    if (val.descriptions) {
+        this.descriptions = val.descriptions;
+    } else { this.descriptions = 'Not found' }
+    this.isbn = val.industryIdentifiers ? `ISBN ${val.industryIdentifiers[0].identifier}` : 'No ISBN available';
+    this.id = val.industryIdentifiers ? `${val.industryIdentifiers[0].identifier}` : '';
 
 }
 
@@ -90,7 +130,7 @@ function Book(val) {
     let client = new pg.Client(DATABASE_URL);
    client.connect().then(() => {
         app.listen(PORT, () => {
-          console.log('this is the listen ');
+          console.log(`this is the listen ${PORT}`);
         });
         // app.listen(process.env.PORT || 5000);
       }).catch(err => {

@@ -14,9 +14,22 @@
 
 <body>
     <header> Best Book</header>
-    <main>
-        <h2>welcome in our website</h2>
-    </main>
+     <main>
+     
+   
+    <h3>Saved Books</h3>
+    <p>Number of books: <%= results.length %> </p>
+    <ul>
+        <% results.forEach(book => {%>
+        <div class="books">
+          <img src="<%= book.image_url %>" alt="">
+          <h2 class="title"><%= book.title %></h2>
+          <h3 class="author"><%= book.author %></h3>
+          <div ><a href="/books/<%=book.id%>">View Details</a></div>
+        </div>
+        <% })%>
+      </ul> 
+    </main> 
 </body>
 
 </html>
