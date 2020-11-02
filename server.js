@@ -53,9 +53,9 @@ function viewdetails(req,res){
 app.post('/books', createBook);
 function createBook(req,res){
 
-    let {title, author, isbn, image_url, descriptions, bookshelf} = req.body;
+    let {title, authors, isbn, image_url, description, bookshelf} = req.body;
     let SQL = 'INSERT INTO mybook (title, author, isbn, image_url, descriptions, bookshelf) VALUES ($1, $2, $3, $4, $5, $6)';
-    let values = [title, author, isbn, image_url, descriptions, bookshelf];
+    let values = [title, authors, isbn, image_url, description, bookshelf];
   
 
 //  client.query(SQL, values)
@@ -109,12 +109,12 @@ function Book(val) {
 
     } else { this.image = `https://i.imgur.com/J5LVHEL.jpg` };
 
-    if (val.author) {
-        this.author = val.author[0];
-    } else { this.author = 'Not found' }
-    if (val.descriptions) {
-        this.descriptions = val.descriptions;
-    } else { this.descriptions = 'Not found' }
+    if (val.authors) {
+        this.authors = val.authors[0];
+    } else { this.authors = 'Not found' }
+    if (val.description) {
+        this.description = val.description;
+    } else { this.description = 'Not found' }
     this.isbn = val.industryIdentifiers ? `ISBN ${val.industryIdentifiers[0].identifier}` : 'No ISBN available';
     this.id = val.industryIdentifiers ? `${val.industryIdentifiers[0].identifier}` : '';
 
