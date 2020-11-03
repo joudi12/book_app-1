@@ -1,16 +1,14 @@
 @media screen and (max-width: 480px)and (min-width: 150px) {
 
-    header {
-        background-color: black;
-        color: white;
-        font-size: xx-large;
-        height: 30%;
-        font-family: 'Amatic SC', cursive;
-    }
+    
     main {
         font-family: 'Amatic SC', cursive;
         background-color: rgb(206, 201, 201);
+      
     }
+    /* body{
+        background-color: rgb(206, 201, 201);
+    } */
     h4 {
         color: white;
         text-align: center;
@@ -27,12 +25,44 @@
         font-size: xx-large;
         font-family: 'Amatic SC', cursive;
     }
-    div {
+    .new {
         background-color: rgb(228, 222, 222);
         padding: 5%;
         margin: 10%;
         text-align: center;
         box-shadow: 8px 8px rgb(95, 93, 93);
+    }
+    #details{
+        background-color: rgb(228, 222, 222);
+        padding: 5%;
+        margin: 10%;
+        text-align: center;
+        box-shadow: 8px 8px rgb(95, 93, 93);
+    }
+    .books{
+        background-color: rgb(228, 222, 222);
+        padding: 5%;
+        margin: 10%;
+        text-align: center;
+        box-shadow: 8px 8px rgb(95, 93, 93);
+    }
+    .num{
+        text-align: center;
+    }
+    .link{
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .view{
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    text-align: center;
+        height: 30px;
+        text-decoration: none;
+        background-color: rgb(2, 2, 2);
+        border-radius: 6px;
     }
     p{
         font-family: 'Amatic SC', cursive;
@@ -40,7 +70,7 @@
     img {
         width: 97%;
     }
-    .hide-form{
-        visibility: hidden;
+    .hide-details{
+        display: none;
     }
 }

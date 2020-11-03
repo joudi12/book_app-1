@@ -2,42 +2,33 @@
 <html lang="en">
 
 <head>
-
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="/public/styles/base.css">
-    <link rel="stylesheet" href="/public/styles/layout.css">
-    <link rel="stylesheet" href="/public/styles/modules.css">
+    <%- include('../../layout/head') %>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-    <title>Document</title>
 </head>
 
 <body>
-    <header> Best Book</header>
+    <%- include('../../layout/header') %>
     <main>
         <h4>Search Result </h4>
 
         <% searchResults.forEach( book => { %>
-        <div>
+        <div class="new">
             <img src="<%=book.image%>" alt="">
 
             <h2 class="one"><%= book.title %></h2>
             <h3><%=book.authors%></h3>
             <p><%=book.description%></p>
-            <button class="select" >Select this book</button>
+            <!-- <button class="select" >Select this book</button> -->
 
             <form  class="hide-form" action="/books" method="post">
 
 
-                <input name="title" type="text" value="<%= book.title %>"/>
-                <input name="authors" type="text" value="<%= book.authors %>"/>
-                <input name="isbn" type="text" value="<%= book.isbn %>"/>
-                <input name="image_url" type="text" value="<%= book.image %>"/>
-                <input name="description" type="text" value="<%= book.description %>"/>
-                <input name="bookshelf" type="text" value="" required/>
+                <input   name="title" type="text" value="<%= book.title %>" style="display: none;"/>
+                <input  name="authors" type="text" value="<%= book.authors %>" style="display: none;" />
+                <input name="isbn" type="text" value="<%= book.isbn %>" style="display: none;"/>
+                <input name="image_url" type="text" value="<%= book.image %>" style="display: none;"/>
+                <input name="description" type="text" value="<%= book.description %>" style="display: none;"/>
+                <input name="bookshelf" type="text" value="<%= book.bookshelf %>" style="display: none;"/>
             
                 <div><button id="/books/<%=book.id%>" type="submit" >Add To Database</button></div>
             

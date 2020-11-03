@@ -1,12 +1,43 @@
+
+
+
+<!-- 
+<head>
+ <%- include('../../layout/head') %>
+</head> -->
 <main>
-    <section>
-     
-          <img src="<%= view.image_url %>" alt="">
-          <h2 class="title"><%= view.title %></h2>
-          <h3 class="author"><%= view.author %></h3>
-          <p class="description"><%= view.descriptions %></p>
-          <h3 class="isbn">ISBN: <%= view.isbn %></h3>
-          <h3 class="bookshelf">Bookshelf: <%= view.bookshelf %></h3>
-         
+    <h4>
+    Details
+    </h4>
+
+    <section id="details">
+
+        <img src="<%= view.image_url %>" alt="">
+        <h2 class="title"><%= view.title %></h2>
+        <h3 class="author"><%= view.author %></h3>
+        <p class="description"><%= view.descriptions %></p>
+        <h5 class="isbn">ISBN: <%= view.isbn %></h5>
+        <h5 class="bookshelf">Bookshelf: <%= view.bookshelf %></h5>
+
+        <button class="select">Update Details</button>
+
+        <form class="hide-details" action="/books/<%=view.id%>?_method=PUT" method="POST">
+
+
+            <input name="title" type="text" value="<%= view.title %>" />
+            <input name="authors" type="text" value="<%= view.author %>" />
+            <input name="isbn" type="text" value="<%= view.isbn %>" />
+            <input name="image_url" type="text" value="<%= view.image_url %>" />
+            <input name="description" type="text" value="<%= view.descriptions %>" />
+            <input name="bookshelf" type="text" value="<%= view.bookshelf %>" />
+
+            <div><button type="submit">Update book</button></div>
+
+        </form>
+        <form action="/books/<%=view.id%>?_method=Delete" method="POST">
+            <div><button type="submit">Delete Book</button></div>
+        </form>
     </section>
-  </main>
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../../../public/js/app.js"></script>
