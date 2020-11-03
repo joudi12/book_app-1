@@ -2,33 +2,26 @@
 <html lang="en">
 
 <head>
-  
-    <link rel="stylesheet" href="/public/styles/base.css">
-    <link rel="stylesheet" href="/public/styles/layout.css">
-    <link rel="stylesheet" href="/public/styles/modules.css">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <%- include('../layout/head') %>
 </head>
 
 <body>
-    <header> Best Book</header>
+    <%- include('../layout/header') %>
      <main>
      
    
-    <h3>Saved Books</h3>
-    <p>Number of books: <%= results.length %> </p>
-    <ul>
+    <h4>Saved Books</h4>
+    <p class="num">Number of books: <%= results.length %> </p>
+    
         <% results.forEach(book => {%>
         <div class="books">
           <img src="<%= book.image_url %>" alt="">
           <h2 class="title"><%= book.title %></h2>
           <h3 class="author"><%= book.author %></h3>
-          <div ><a href="/books/<%=book.id%>">View Details</a></div>
+          <div class="view"><a class="link" href="/books/<%=book.id%>">View Details</a></div>
         </div>
         <% })%>
-      </ul> 
+      
     </main> 
 </body>
 
